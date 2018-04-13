@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="panel panel-default">              
+        <div class="panel-heading">Edit Student</div>
+
+<div class="container">
+    <div class="col-md-5">
+        <div class="form-area">  
+            <form [formGroup] = "userFormgroup" novalidate>
+            <br style="clear:both">
+                <h3 style="margin-bottom: 15px; text-align: center;">Student Form </h3>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="id" name="mobile" placeholder="id" disabled required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="username" name="name" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="firstname" name="email" placeholder="firstname" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="lastname" name="mobile" placeholder="lastname" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="email" name="mobile" placeholder="email" required>
+                    </div>
+                    
+                    <div class="form-group" formGroupName="address">
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="street" name="mobile" placeholder="street" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="pin" name="mobile" placeholder="pincode" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="country" name="mobile" placeholder="country" required>
+                        </div>
+                        
+                        
+                    </div>
+                
+            <button type="button"  name="submit" class="btn btn-primary pull-right" (click)= "update(userFormgroup.value)">Update</button>
+           <p>form value: {{userFormgroup.value | json}}</p>
+          </form>
+        </div>
+    </div>
+   </div>
+ </div>
+</div>

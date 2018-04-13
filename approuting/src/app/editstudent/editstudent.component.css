@@ -1,0 +1,57 @@
+th {
+    white-space: nowrap;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: gainsboro; 
+    height: 5px;
+}
+::-webkit-scrollbar{height: 5px;}
+.support_brand{
+    height: 100px;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+    display: block;
+    line-height: 1.428571429;
+    color: #999;
+}
+.panel-right {
+    border: 0.05em solid lightgray;
+    border-radius: 0.25em 0.25em;
+    margin-top: -0.2em;
+    padding: 0.3em;
+    font-size: 0.9em;
+    float: right;
+}
+.modal-content{border-radius: 0px !important;}
+.modal-header{background: #eee;}
+td, th{vertical-align: middle !important;text-align: center;}
+.form-signin {
+    max-width: 380px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+.license_badge{text-align: right;}
+#client-form{
+    padding:5%;
+    border: 1px solid #DDD !important;
+    -webkit-box-shadow: 1px 2px 15px 0px rgba(136,136,136,0.44); 
+    box-shadow: 1px 2px 15px 0px rgba(136,136,136,0.44);
+}
+.help-block{
+    color:red;
+}
+.quick_nav{}
+
+.navbar a:hover{
+    color: #fff !important;
+}

@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "id": "cc73f07d-da01-4944-993b-06d239154a08",
+      "username": "harishewg",
+      "firstname": "Whirlwindde",
+      "lastname": "hainow",
+      "email": "bandari2@gmail.com",
+      "password": "1234",
+      "address": {
+        "street": "123 Main",
+        "pin": "94801",
+        "country": "tfgg"
+      }
+    }
+  ]
+}

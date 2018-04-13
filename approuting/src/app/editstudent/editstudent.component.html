@@ -1,0 +1,127 @@
+<div class="container">
+    <div class=" text-center">
+
+        <h2>Student Form</h2>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Personal details {{mesg}}</h4>
+            <hr class="mb-4">
+            <form [formGroup]="userFormgroup" class="needs-validation" novalidate="">
+                <div class="row">
+                    <input type="hidden" class="form-control" formControlName="id">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName">First name</label>
+                        <input type="text" class="form-control" formControlName="firstname" id="firstName" placeholder="" value="" required="">
+                        <div class="text-danger" [hidden]="userFormgroup.controls.firstname.valid || userFormgroup.controls['firstname'].pristine">
+                            first name should be four charecters.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="lastName">Last name</label>
+                        <input type="text" class="form-control" formControlName="lastname" id="lastName" placeholder="" value="" required="">
+                        <div class="text-danger" [hidden]="userFormgroup.controls.lastname.valid || userFormgroup.controls['lastname'].pristine">
+                            last name should be four charecters.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="username">Username</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@</span>
+                        </div>
+                        <input type="text" class="form-control" formControlName="username" id="username" placeholder="Username" required="">
+                        <div class="text-danger" [hidden]="userFormgroup.controls.username.valid || userFormgroup.controls['username'].pristine" style="width: 100%;">
+                            username should be four charecters.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                    <input type="email" class="form-control" formControlName="email" id="email" placeholder="you@example.com">
+                    <div class="text-danger" [hidden]="userFormgroup.controls.email.valid || userFormgroup.controls['email'].pristine">
+                        Please enter a valid email address.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="email">Password </label>
+                    <input type="email" class="form-control" formControlName="password" id="password" placeholder="password">
+                    <div class="text-danger" [hidden]="userFormgroup.controls.password.valid || userFormgroup.controls['password'].pristine">
+                        Please enter a password of 4 chareters.
+                    </div>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label for="address">Address</label>
+
+                </div>
+
+                <div class="row" formGroupName="address">
+                    <div class="col-md-5 mb-3">
+                        <label for="country">Country</label>
+                        <input type="text" class="form-control" formControlName="country" id="country" placeholder="India" required="">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="state">Street</label>
+                        <input type="text" class="form-control" formControlName="street" id="street" placeholder="1234 Main St" required="">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="zip">Zip</label>
+                        <input type="text" class="form-control" formControlName="pin" id="zip" placeholder="" required="">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address">Subjects</label>
+                </div>
+                <ng-container formArrayName="subjects">
+                    <div class="row" *ngFor="let row of userFormgroup.controls.subjects.controls; let index = index">
+                        <div class="col-md-5 mb-3" [formGroupName]="index">
+                            <label for="country">Name</label>
+                            <select class="custom-select d-block w-100" formControlName="name">
+                            <option *ngFor="let subname of subNames" [ngValue]="subname">{{subname}}</option>
+                            <option></option>
+                          </select>
+                            <div class="invalid-feedback">
+                                Please select a valid country.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3" [formGroupName]="index">
+                            <label for="state">Marks</label>
+                            <input type="text" class="form-control" placeholder="Ex.90" formControlName="marks">
+
+                            <div class="invalid-feedback">
+                                Please provide a valid state.
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3" [formGroupName]="index">
+                            <button class="btn btn-danger btn-sm" type="button" (click)="removeSubClick(index)">Remove</button>
+                        </div>
+
+                    </div>
+
+                </ng-container>
+                <button class="btn btn-default " type="button" (click)="addSubClick()">Add Subject</button>
+                <button *ngIf="(mesg.length == 0)" class="btn btn-success " type="button" [disabled]="userFormgroup.invalid" (click)="addstudent(userFormgroup.value)">Submit Form</button>
+                <button *ngIf="(mesg.length!=0)" class="btn btn-success " type="button" [disabled]="userFormgroup.invalid" (click)="update(userFormgroup.value)">Update Form</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">© 2017-2018 Company Name</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+</div>

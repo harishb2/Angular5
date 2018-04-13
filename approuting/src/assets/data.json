@@ -1,0 +1,24 @@
+[
+		{
+				"firstname": "vamsi",
+				"lastname": "tarun",
+				"username": "vamsi_502",
+				"password": "vamsi123",
+				"email": "vamsi123@",
+				"country": "india",
+				"street": "telangana",
+				"pin": 500072,
+				"studentid": 100
+		},
+		{
+				"firstname": "harish",
+				"lastname": "yadav",
+				"username": "harish_5",
+				"password": "harish123",
+				"email": "vamsi123@",
+				"country": "indis",
+				"street": "telangana",
+				"pin": 500085,
+				"studentid": 106
+		}
+]
