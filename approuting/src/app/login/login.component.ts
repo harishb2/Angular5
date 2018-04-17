@@ -42,9 +42,8 @@ export class LoginComponent implements OnInit {
       }
 
   loginform(login) {    
-    this._studentService.loginCheck(login);   
-
-    
+    this._studentService.loginCheck(login);  
+            
   }
 
 }

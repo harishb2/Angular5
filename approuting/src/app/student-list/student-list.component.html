@@ -1,67 +1,66 @@
 <div class="container" ng-init="get_all_clients()">
-  <div class="panel panel-default">
-          <!-- Default panel contents -->
-          <div class="panel-heading">Student Details
-              <input type="search" name="search" [formControl]="draftSearch" class="search panel-right" style="margin-left: 5px;">
-              <a  class="btn btn-outline-primary panel-right" style="margin-left: 5px;"  routerLink='/editstudent'>Add Student</a>
-           
-          </div>
-        
-          <!-- List group -->
-          <div class="table-responsive">
-              <table class="table table-striped">
-                  <thead>
-                          <tr>                                 
-                                  <th>Student FirstName</th>
-                                  <th>Student LastName</th>
-                                  <th>Student Email</th>
-                                  <th>Student Adress</th>
-                                  <th>Student Mangement</th>                                 
-                          </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor = "let student of students">
-                      <td>{{student.firstname}}</td>
-                      <td>{{student.lastname}}</td>
-                      <td>{{student.email}}</td>
-                      <td>{{student.address.street}},{{student.address.pin}},{{student.address.country}}</td>                                         
-                      <td> <a routerLink='/editstudent/{{student.id}}' class="btn btn-primary" >Edit</a></td>
-                      <td><button type="button" class="btn btn-danger"(click)="delstudent(student.id)">Delete</button></td>
-                      
-                    </tr>                    
-                  </tbody>
-              </table>
-          </div>
-  </div>
-  <footer class="my-5 pt-5 text-muted text-center text-small">
-    <p class="mb-1">© 2017-2018 Company Name</p>
-    <ul class="list-inline">
-      <li class="list-inline-item"><a href="#">Privacy</a></li>
-      <li class="list-inline-item"><a href="#">Terms</a></li>
-      <li class="list-inline-item"><a href="#">Support</a></li>
-    </ul>
-  </footer>
+
+    <!-- Default panel contents -->
+    <div class="container" style="margin-bottom: 5px;">Student Details
+        <input type="search" name="search" [formControl]="draftSearch" class="search panel-right" style="margin-left: 5px;">
+        <a class="btn btn-outline-primary panel-right" style="margin-left: 5px;" routerLink='/editstudent'>Add Student</a>
+
+    </div>
+
+    <!-- List group -->
+    <div class="container" style="margin-top: 15px;">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Student FirstName</th>
+                    <th>Student LastName</th>
+                    <th>Student Email</th>
+                    <th>Student Adress</th>
+                    <th>Student Edit</th>
+                    <th>Student Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <div *ngIf="loader === 0" class="loader"></div>
+                <tr *ngFor="let student of students">
+                    <td>{{student.firstname}}</td>
+                    <td>{{student.lastname}}</td>
+                    <td>{{student.email}}</td>
+                    <td>{{student.address.street}},{{student.address.pin}},{{student.address.country}}</td>
+                    <td> <a routerLink='/editstudent/{{student.id}}' class="btn btn-primary">Edit</a></td>
+                    <td><button type="button" class="btn btn-danger" (click)="delstudent(student.id)">Delete</button></td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">© 2017-2018 Company Name</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
 </div>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Student Edit</h4>
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Student Edit</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <a href="editstudent.html" class="btn btn-default" data-dismiss="modal">Close</a>
+            </div>
         </div>
-        <div class="modal-body">
-            
-        </div>
-        <div class="modal-footer">
-          <a href="editstudent.html" class="btn btn-default" data-dismiss="modal">Close</a>
-        </div>
-      </div>
-      
+
     </div>
 </div>
-  
-
-
-

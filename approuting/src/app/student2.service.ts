@@ -61,7 +61,7 @@ export class StudentService {
 
   }
 };
-public Students=[];
+public Students = [];
 public logeduser:any;
 
 //display students
@@ -89,7 +89,7 @@ public logeduser:any;
  }
 
 //update student
-/*  updatestudent(student) {
+ updatestudent(student) {
   console.log(student.id);
   this.Students = JSON.parse(localStorage.getItem("Students")) || [];
   const index = this.Students.findIndex(item => item.id === student.id);
@@ -97,7 +97,7 @@ public logeduser:any;
   this.Students[index]=student;
   localStorage.setItem('Students', JSON.stringify(this.Students));
   this.list.next(JSON.parse(localStorage.getItem("Students"))); 
- } */
+ }
 
 //delete student
  deletestudent(id) {
@@ -108,7 +108,7 @@ public logeduser:any;
   localStorage.setItem('Students', JSON.stringify(this.Students));
   this.list.next(JSON.parse(localStorage.getItem("Students")));  
  }
-/* 
+
  loginCheck(login) {
     console.log(login.username);
     this.Students = JSON.parse(localStorage.getItem("Students")) || [];   
@@ -122,7 +122,7 @@ public logeduser:any;
         this.router.navigate(['/dashboard']);         
       }      
     }   
- } */
+ }
 
 
  //Httpclient based crud operations
@@ -146,23 +146,6 @@ public logeduser:any;
    delStudent(id): Observable<Student[]> {
     return this.http.delete<Student []>(`/api/delete/${id}`, httpOptions);
    }
-
-   loginCheck(student:Student) {
-    console.log(student.username);
-    this.http.post<Student[]>('/api/login', student, httpOptions).subscribe(data =>
-      { if(student.username === data) {
-        console.log(data);
-        localStorage["user"] = JSON.stringify(data);
-        this.user.next(localStorage.getItem("user"));
-        this.router.navigate(['/dashboard']);  
-      }      
-      });
- }
- updatestudent(student) {
-   let id = student.id;  
-  return this.http.put<Student[]>(`/api/update/`, student, httpOptions).subscribe();  
- }
-
 
 
 }

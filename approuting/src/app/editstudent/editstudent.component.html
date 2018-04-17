@@ -1,12 +1,8 @@
 <div class="container">
     <div class=" text-center">
-
         <h2>Student Form</h2>
-
     </div>
-
     <div class="row">
-
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Personal details {{mesg}}</h4>
             <hr class="mb-4">
@@ -28,7 +24,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="mb-3">
                     <label for="username">Username</label>
                     <div class="input-group">
@@ -41,7 +36,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="mb-3">
                     <label for="email">Email <span class="text-muted">(Optional)</span></label>
                     <input type="email" class="form-control" formControlName="email" id="email" placeholder="you@example.com">
@@ -56,14 +50,9 @@
                         Please enter a password of 4 chareters.
                     </div>
                 </div>
-
-
-
                 <div class="mb-3">
                     <label for="address">Address</label>
-
                 </div>
-
                 <div class="row" formGroupName="address">
                     <div class="col-md-5 mb-3">
                         <label for="country">Country</label>
@@ -79,16 +68,15 @@
                     </div>
                 </div>
 
-                <div class="mb-3">
+                <div class="mb-1">
                     <label for="address">Subjects</label>
                 </div>
                 <ng-container formArrayName="subjects">
                     <div class="row" *ngFor="let row of userFormgroup.controls.subjects.controls; let index = index">
-                        <div class="col-md-5 mb-3" [formGroupName]="index">
+                        <div class="col-md-4 mb-3" [formGroupName]="index">
                             <label for="country">Name</label>
                             <select class="custom-select d-block w-100" formControlName="name">
-                            <option *ngFor="let subname of subNames" [ngValue]="subname">{{subname}}</option>
-                            <option></option>
+                            <option  *ngFor="let sub of Summaries" [ngValue]="sub">{{sub}}</option>                            
                           </select>
                             <div class="invalid-feedback">
                                 Please select a valid country.
@@ -102,20 +90,42 @@
                                 Please provide a valid state.
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3" [formGroupName]="index">
-                            <button class="btn btn-danger btn-sm" type="button" (click)="removeSubClick(index)">Remove</button>
+                        <div class="col-md-2 mb-3" [formGroupName]="index">
+                            <label for="state ">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <button type="button" class="form-control btn btn-danger btn-sm" (click)="removeSubClick(index)">Remove</button>
+
+                            <div class="invalid-feedback">
+                                Please provide a valid state.
+                            </div>
                         </div>
-
                     </div>
-
                 </ng-container>
-                <button class="btn btn-default " type="button" (click)="addSubClick()">Add Subject</button>
+                <button class="btn btn-block mb-3" type="button" (click)="addSubClick()">Add Subject+</button>
+                <button class="btn btn-primary " type="button" data-toggle="modal" data-target="#exampleModal">Go Back</button>
                 <button *ngIf="(mesg.length == 0)" class="btn btn-success " type="button" [disabled]="userFormgroup.invalid" (click)="addstudent(userFormgroup.value)">Submit Form</button>
                 <button *ngIf="(mesg.length!=0)" class="btn btn-success " type="button" [disabled]="userFormgroup.invalid" (click)="update(userFormgroup.value)">Update Form</button>
             </form>
         </div>
     </div>
-
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Conform Selection</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    Please Click on GoBack to go users list
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="goback()">Go Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">© 2017-2018 Company Name</p>
         <ul class="list-inline">

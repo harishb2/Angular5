@@ -14,22 +14,15 @@ import 'rxjs/add/operator/debounceTime';
 export class StudentListComponent implements OnInit {
 
   public students: any;
- 
+  loader; 
   draftSearch = new FormControl();
   constructor(
     private router: Router,
-    private _studentService: StudentService) { }
+    private _studentService: StudentService) { 
+      this.loader=0;       
+    }
 
-  ngOnInit() {
-  //   console.log("in", this.students);
-
-  //  this.students= JSON.parse(localStorage["Students"]);
-  //   console.log(this.students);
-
-  /*   this._studentService.list.subscribe(res => {
-      this.students = res;
-    }) */
-
+  ngOnInit() {    
     this.getHeroes();
     this.draftSearch.valueChanges
       .debounceTime(500)
@@ -44,18 +37,21 @@ export class StudentListComponent implements OnInit {
 
   getHeroes(): void {
     this._studentService.getStudents()
-      .subscribe((heroes: any) => this.students = heroes.users);
+      .subscribe((heroes: any) => {this.students = heroes.users; this.loader=1});
   }
 
   delstudent(id): void {
     console.log(id);
     
-  this._studentService.delStudent(id).subscribe();
+  this._studentService.delStudent(id).subscribe(data => {
+    this.students=data; 
+  });
   //this.students= JSON.parse(localStorage["Students"]);
   this.router.navigate['/students'];    
   }
 
-  formedit() {    
+  editStudent(id) { 
+       
   }
 
 }

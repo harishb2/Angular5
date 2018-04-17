@@ -12,6 +12,8 @@ export class EditstudentComponent implements OnInit {
   public students=[];
   mesg='';
   userFormgroup: FormGroup;
+  public summaries: any[];
+  Summaries = ["C", "C++", "Java","DataStructures"];
 
   constructor(
     private router: Router,
@@ -35,9 +37,8 @@ export class EditstudentComponent implements OnInit {
         pin: ['', Validators.required],
         country: ['', Validators.required]
       }),
-      subjects: this.formBuilder.array([]),
-      
-    });
+      subjects: this.formBuilder.array([]),   
+      });
   }
 
   isEmailValid(control) {
@@ -48,15 +49,16 @@ export class EditstudentComponent implements OnInit {
   }
 
   ngOnInit() {  
-    let id: any = this.route.snapshot.paramMap.get('id');
-    this._studentService.getHero(id).subscribe((hero:any) => {
-      this.students=hero.users
+    let id: any = this.route.snapshot.paramMap.get('id');    
       if (id) {
-        const index = this.students.findIndex(item => item.id === id);
-        this.userFormgroup.patchValue(this.students[index], { onlySelf: true });
-        let subNames:{"1":"java","2":"angular"}
-      }
-    });
+        this.mesg= 'edit';
+        this._studentService.getHero(id).subscribe((hero:any) => {          
+          this.userFormgroup.patchValue(hero, { onlySelf: true });
+          hero.subjects.forEach(element => {
+            this.addSubClick(element);
+          });
+         });
+      };
   }
 
   addstudent(students) {  
@@ -70,24 +72,28 @@ export class EditstudentComponent implements OnInit {
   update(student) {    
     console.log(student);
     this._studentService.updatestudent(student);
-    this.router.navigate(['/students']);  
+    
   }
 
-  addSubClick() {
+  addSubClick(data?) {
     let arrayControls = <FormArray>this.userFormgroup.controls.subjects;
-    arrayControls.push(this.initSubRow());
+    arrayControls.push(this.initSubRow(data));
   }
 
-  initSubRow() {
+  initSubRow(data?) {
     return this.formBuilder.group({
-      name: ['', Validators.required],
-      marks: ['', Validators.required]
+      name: [data ? data.name : '', Validators.required],
+      marks: [data ? data.marks :'', Validators.required]
     });
-  }
+  } 
 
   removeSubClick(index) {
     console.log(index);
     let arrayControls = <FormArray>this.userFormgroup.controls.subjects;
     arrayControls.removeAt(arrayControls.value.findIndex(item => item.id === index));
+  }
+
+  goback() {        
+    this.router.navigate(['/students']);
   }
 }
