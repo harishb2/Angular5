@@ -1,21 +1,23 @@
 <!--The content below is only a placeholder and can be replaced.-->
-   <!-- Fixed navbar -->
- 
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-      <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
-      <nav class="my-2 my-md-0 mr-md-3">
+<!-- Fixed navbar -->
+<title>app</title>
+
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
         <a *ngIf="user" class="p-2 text-dark" routerLink='/dashboard'>Dashboard</a>
         <a *ngIf="user" class="p-2 text-dark" routerLink='/students'>StudentList</a>
         <a *ngIf="user" class="p-2 text-dark" routerLink='/editstudent'>CreateStudent</a>
-        <a *ngIf="user" class="p-2 text-success font-weight-bold" >Hello {{user }}</a>
-      </nav>
-        
-      <div *ngIf="user;else login">
+        <a *ngIf="user" class="p-2 text-success font-weight-bold">Hello {{user }}</a>
+    </nav>
+
+    <div *ngIf="user;else login">
         <button type="button" class="btn btn-outline-danger" (click)="logout()">Logout</button>
-      </div>
-       <ng-template #login><a class="btn btn-outline-primary" routerLink="/login">Login</a></ng-template>
     </div>
- 
+    <ng-template #login><a class="btn btn-outline-primary" routerLink="/login">Login</a></ng-template>
+</div>
+
 
 
 

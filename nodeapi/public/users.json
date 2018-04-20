@@ -1,17 +1,1 @@
-{
-  "users": [
-    {
-      "id": "cc73f07d-da01-4944-993b-06d239154a08",
-      "username": "harishewg",
-      "firstname": "Whirlwindde",
-      "lastname": "hainow",
-      "email": "bandari2@gmail.com",
-      "password": "1234",
-      "address": {
-        "street": "123 Main",
-        "pin": "94801",
-        "country": "tfgg"
-      }
-    }
-  ]
-}
+{"users":[{"id":"98a4f854-2819-4a80-a456-8a6509be2284","username":"raman","firstname":"raman","lastname":"raju","email":"bandari2@gmail.com","password":"1234","address":{"street":"123 Main","pin":"94801","country":"India"},"subjects":[{"name":"C","marks":"89"},{"name":"Java","marks":"70"}]},{"id":"7d547044-934d-49f8-a1b5-d8cbb9a88406","date":"2018-04-19T11:50:05.424Z","username":"Harish","firstname":"Whirlwindde","lastname":"Bandari","email":"hari@gmail.com","password":"12345","address":{"street":"123 Main","pin":"94801","country":"India"},"subjects":[{"name":"C","marks":"89"}]},{"id":"a11413df-ca23-4764-b47f-74728b4fabfa","date":"2018-04-20T07:17:10.135Z","username":"jasper","firstname":"jasper","lastname":"Bandari","email":"hari@gmail.com","password":"1234","address":{"street":"123 Main","pin":"94801","country":"India"},"subjects":[{"name":"C","marks":"45"},{"name":"C++","marks":"48"}]}]}

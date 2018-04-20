@@ -50,8 +50,7 @@ export class StudentListComponent implements OnInit {
   this.router.navigate['/students'];    
   }
 
-  editStudent(id) { 
-       
+  editStudent(id) {        
   }
 
 }

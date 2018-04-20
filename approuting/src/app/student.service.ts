@@ -29,9 +29,6 @@ export class StudentService {
     this.list.next(JSON.parse(localStorage.getItem("Students")));
     this.user.next(JSON.parse(localStorage.getItem("user")));
   }
-
-
-
   uuid() {
     let i: any, random: any;
     let result = '';
@@ -58,7 +55,6 @@ export class StudentService {
     street: "",
     pincode: "",
     country: ""
-
   }
 };
 public Students=[];
@@ -150,9 +146,10 @@ public logeduser:any;
    loginCheck(student:Student) {
     console.log(student.username);
     this.http.post<Student[]>('/api/login', student, httpOptions).subscribe(data =>
-      { if(student.username === data) {
+      { if(student.username === data['user']) {
         console.log(data);
-        localStorage["user"] = JSON.stringify(data);
+        localStorage["user"] = JSON.stringify(data['user']);
+        localStorage["token"] = JSON.stringify(data['token']);
         this.user.next(localStorage.getItem("user"));
         this.router.navigate(['/dashboard']);  
       }      
@@ -162,7 +159,4 @@ public logeduser:any;
    let id = student.id;  
   return this.http.put<Student[]>(`/api/update/`, student, httpOptions).subscribe();  
  }
-
-
-
 }

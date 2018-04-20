@@ -21,9 +21,14 @@
                 </tr>
             </thead>
             <tbody>
-                <div *ngIf="loader === 0" class="loader"></div>
+                <div *ngIf="loader === 0" class="loader">
+                    <div class="circle">
+                        <div class="inner-circle">
+                        </div>
+                    </div>
+                </div>
                 <tr *ngFor="let student of students">
-                    <td>{{student.firstname}}</td>
+                    <td>{{student.firstname | uppercase}}</td>
                     <td>{{student.lastname}}</td>
                     <td>{{student.email}}</td>
                     <td>{{student.address.street}},{{student.address.pin}},{{student.address.country}}</td>
